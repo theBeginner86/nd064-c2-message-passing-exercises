@@ -12,7 +12,7 @@ def health():
     return jsonify({'response': 'Hello World!'})
 
 
-@app.route('/orders/create_order', methods=['GET', 'POST'])
+@app.route('/orders', methods=['GET', 'POST'])
 def orders():
     if request.method == 'GET':
         return jsonify(retrieve_orders())
@@ -20,7 +20,7 @@ def orders():
         request_body = request.json
         return jsonify(create_order(request_body))
     else:
-        raise 'Unwanted HTTP request!! Try Again...'
+        raise Exception('Unwanted HTTP request!! Try Again...')
 
 
 if __name__ == '__main__':
