@@ -5,6 +5,7 @@ from flask import Flask, jsonify, request, g, Response
 
 from .services import retrieve_orders, create_order
 
+
 app = Flask(__name__)
 
 @app.before_request
@@ -29,6 +30,7 @@ def computers():
         return jsonify(retrieve_orders())
     elif request.method == 'POST':
         request_body = request.json
+        print(request_body)
         result = create_order(request_body)
         return Response(status=202)
     else:
